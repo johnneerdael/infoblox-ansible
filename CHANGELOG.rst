@@ -4,6 +4,90 @@ Infoblox.Nios_Modules Release Notes
 
 .. contents:: Topics
 
+v1.3.0
+======
+
+Release Summary
+---------------
+- Issue fixes to create TXT record with equals sign
+- For nonexistent record, update operation creates the new record
+- For nonexistent IPv4Address, update operation creates a new A record with new_ipv4addr
+
+Major Changes
+-------------
+- Update operation using `old_name` and `new_name` for the object with dummy name in `old_name` (which does not exist in system) will not create a new object in the system. An error will be thrown stating the object does not exist in the system `#129 <https://github.com/infobloxopen/infoblox-ansible/pull/129>`_
+- Update `text` field of TXT Record `#128 <https://github.com/infobloxopen/infoblox-ansible/pull/128>`_
+
+Bugfixes
+---------
+- Fix to create TXT record with equals sign `#128 <https://github.com/infobloxopen/infoblox-ansible/pull/128>`_
+
+  
+v1.2.2
+======
+
+Release Summary
+---------------
+- Issue fixes to create PTR record in different network views
+- Support extended to determine whether the DTC server is disabled or not
+
+Minor Changes
+-------------
+- Fix to create PTR record in different network views `#103 <https://github.com/infobloxopen/infoblox-ansible/pull/103>`_
+- Remove use_option for DHCP option 60 `#104 <https://github.com/infobloxopen/infoblox-ansible/pull/104>`_
+- Allow specifying a template when creating a network `#105 <https://github.com/infobloxopen/infoblox-ansible/pull/105>`_
+- Fix unit and sanity test issues `#117 <https://github.com/infobloxopen/infoblox-ansible/pull/117>`_
+- Expanding for disable value `#119 <https://github.com/infobloxopen/infoblox-ansible/pull/119>`_
+
+
+v1.2.1
+======
+
+Release Summary
+---------------
+Added tags to support release on Ansible Automation Hub
+
+Minor Changes
+-------------
+Added tags 'cloud' and 'networking' in 'galaxy.yaml'
+
+
+v1.2.0
+======
+Release Summary
+---------------
+- Issue fixes to update A Record using 'next_available_ip' function
+- Added a new feature - Update canonical name of the CNAME Record
+- Updated the 'required' fields in modules
+
+Minor Changes
+-------------
+- Updated 'required' field in modules `#99 <https://github.com/infobloxopen/infoblox-ansible/pull/99>`_
+- Following options are made required in the modules
+
+.. list-table:: 
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Record
+     - Option made required
+   * - A
+     - ipv4addr
+   * - AAAA
+     - ipv6addr
+   * - CNAME
+     - canonical     
+   * - MX
+     - mail_exchanger, preference     
+   * - PTR
+     - ptrdname
+     
+Bugfixes
+-------------
+- nios_a_record module - KeyError: 'old_ipv4addr' `#79 <https://github.com/infobloxopen/infoblox-ansible/issues/79>`_
+- Ansible playbook fails to update canonical name of CName Record `#97 <https://github.com/infobloxopen/infoblox-ansible/pull/97>`_
+
+
 v1.1.2
 ======
 Release Summary
